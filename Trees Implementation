@@ -1,0 +1,48 @@
+''' Tree represents the nodes connected by edges. It is a non-linear data structure. 
+Properties -
+   One node is marked as Root node.
+   Every node other than the root is associated with one parent node.
+   Each node can have an arbiatry number of chid node. '''
+   
+ class Tree:
+  def __init__(self, val = None):
+    if val != None:
+	    self.val = val
+    else:
+        self.val = None
+    self.left = None
+    self.right = None
+
+#Insert the elements periodically
+  def insert(self, val):
+    if self.val:
+        if val < self.val:
+            if self.left is None:
+            	self.left = Tree(val)
+            else:
+            	self.left.insert(val)
+        elif val > self.val:
+        		if self.right is None:
+        		    self.right = Tree(val)
+        else:
+            self.right.insert(val)
+    else:
+        self.val = val
+
+#Prints elements in tree
+  def printValues(self):
+    if self.left:
+        self.left.printValues()
+    print(self.val)
+    if self.right:
+        self.right.printValues()
+
+tree = Tree(20)
+tree.left = Tree(18)
+tree.right = Tree(22)
+tree.insert(7)
+tree.insert(-3)
+tree.insert(14)
+tree.insert(-9)
+
+tree.printValues()
