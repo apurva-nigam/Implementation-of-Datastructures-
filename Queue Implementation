@@ -1,0 +1,56 @@
+class Queue():
+    def __init__(self, size):
+        self.queue = []
+        self.size = size
+
+    def __str__(self):
+        myString = ' '.join(str(i) for i in self.queue)
+        return myString
+
+#Adds an items to rear queue
+    def enqueue(self, item):
+        if(self.isFull() != True):
+            self.queue.insert(0, item)
+        else:
+            print('Queue is Full!')
+            
+#Adds an items to front queue
+    def dequeue(self):
+        if(self.isEmpty() != True):
+            return self.queue.pop()
+        else:
+            print('Queue is Empty!')
+
+#Checks if queue is empty
+    def isEmpty(self):
+        return self.queue == []
+
+#Check if queue is full
+    def isFull(self):
+        return len(self.queue) == self.size
+
+#Check the first element at front queue
+    def peek(self):
+        if(self.isEmpty() != True):
+            return self.queue[-1]
+        else:
+            print('Queue is Empty!')
+            
+
+if __name__ == '__main__':
+    myQueue = Queue(10)
+    myQueue.enqueue('Queue')
+    myQueue.enqueue('Implementation')
+    myQueue.enqueue('done')
+    
+    print(myQueue)
+    
+    myQueue.enqueue(1)
+    myQueue.enqueue(2)
+    myQueue.enqueue(3)
+    
+    print(myQueue)
+    
+    myQueue.dequeue()
+    
+    print(myQueue)
